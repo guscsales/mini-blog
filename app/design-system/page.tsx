@@ -1,3 +1,4 @@
+import { readCmsFile } from "@/packages/factories/services/cms";
 import { ColorTokens } from "@/packages/ui/components/design-system/color-tokens";
 import {
   LayoutTokens,
@@ -5,6 +6,7 @@ import {
   SpacingTokens,
 } from "@/packages/ui/components/design-system/layout-tokens";
 import { LogoShowcase } from "@/packages/ui/components/design-system/logo-showcase";
+import { MarkdownShowcase } from "@/packages/ui/components/design-system/markdown-showcase";
 import {
   FontWeights,
   Leadings,
@@ -25,7 +27,9 @@ export const metadata = {
   description: "Tokens do mini-blog importados do Paper.",
 };
 
-export default function DesignSystemPage() {
+export default async function DesignSystemPage() {
+  const markdownSource = await readCmsFile("design-system/markdown.md");
+
   return (
     <PageShell>
       <PageHeader
@@ -81,6 +85,10 @@ export default function DesignSystemPage() {
 
       <Section title="07 — Breakpoints e containers">
         <LayoutTokens />
+      </Section>
+
+      <Section title="08 — Markdown">
+        <MarkdownShowcase source={markdownSource} />
       </Section>
     </PageShell>
   );

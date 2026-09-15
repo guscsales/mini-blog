@@ -1,0 +1,55 @@
+/**
+ * Bloco de código do markdown. Mora em CSS, e não em classes utilitárias,
+ * porque depende de contador e de pseudo-elemento — coisas que ficam ilegíveis
+ * espremidas em variante arbitrária.
+ *
+ * A marcação vem do rehype-pretty-code: cada linha é um `span[data-line]`, e a
+ * destacada ganha `data-highlighted-line`.
+ */
+
+.code-block [data-line] {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  border-left: 2px solid transparent;
+}
+
+/*
+ * Duas linhas chegam destacadas: `data-highlighted-line`, do próprio
+ * rehype-pretty-code (meta `{n}` da cerca), e `.highlighted`, do shikijs
+ * transformer que lê o comentário `// [!code highlight]` no código-fonte.
+ * Mesmo visual para as duas.
+ */
+.code-block [data-highlighted-line],
+.code-block [data-line].highlighted {
+  border-left-color: var(--color-accent);
+  background-color: #12200f;
+}
+
+.code-block code[data-line-numbers] {
+  counter-reset: line;
+}
+
+.code-block code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 30px;
+  margin-right: 20px;
+  text-align: right;
+  color: #4e574f;
+}
+
+.code-block code[data-line-numbers] > [data-highlighted-line]::before,
+.code-block code[data-line-numbers] > [data-line].highlighted::before {
+  color: var(--color-accent);
+}
+
+/* Palavra marcada com `[!code word:nome]` — mesma pílula do código inline. */
+.code-block .highlighted-word {
+  border-radius: 4px;
+  background-color: var(--color-accent-dim);
+  padding-block: 1px;
+  padding-inline: 4px;
+  margin-inline: -4px;
+}
