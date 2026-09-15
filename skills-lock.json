@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "hele-paper-to-code": {
+      "source": "guscsales/hele-skills",
+      "sourceType": "github",
+      "skillPath": "skills/hele-paper-to-code/SKILL.md",
+      "computedHash": "7c100ba1eb96702b7a6193ae06375c994c07d07f2134d094b25e4b961d156f78"
+    }
+  }
+}
