@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * Design System — mini-blog
+ * Tokens exportados do Paper (A00 — Design System).
+ * Fonte da verdade de estilo do projeto: nada de valor cru nos componentes.
+ * ------------------------------------------------------------------------- */
+
+@theme {
+  /* Cores */
+  --color-bg: #0a0b0a;
+  --color-surface: #121412;
+  --color-surface-hover: #181c18;
+  --color-border: #20241f;
+  --color-border-strong: #2e342d;
+  --color-text: #e6eae6;
+  --color-text-muted: #8a948b;
+  --color-accent: #7cff9b;
+  --color-accent-dim: #1b3324;
+  --color-code-bg: #0e110e;
+
+  /* Escala tipográfica */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 17px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 40px;
+  --text-4xl: 56px;
+  --text-5xl: 72px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.12em;
+
+  --leading-tight: 108%;
+  --leading-snug: 130%;
+  --leading-relaxed: 28px;
+
+  /* Layout */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  --container-prose: 680px;
+  --container-wide: 1120px;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+}
+
+/* Famílias ligadas às variáveis do next/font (ver app/layout.tsx). */
+@theme inline {
+  --font-display: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  ::selection {
+    background-color: var(--color-accent-dim);
+    color: var(--color-accent);
+  }
+}
