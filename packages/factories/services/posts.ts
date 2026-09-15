@@ -1,4 +1,5 @@
-import type { FeaturedPost, Post, TagFilter } from "../models/post";
+import type { FeaturedPost, Post, PostDetail, TagFilter } from "../models/post";
+import { readCmsFile } from "./cms";
 
 /**
  * Conteúdo provisório, copiado do layout do Paper. Vai ser trocado pela
@@ -120,6 +121,32 @@ export function getPosts(): Post[] {
 /** Tags oferecidas como atalho de filtro na home. */
 export function getTagFilters(): TagFilter[] {
   return tagFilters;
+}
+
+/** Post completo, com corpo em markdown e navegação para os vizinhos. */
+export async function getPostBySlug(slug: string): Promise<PostDetail | undefined> {
+  if (slug !== featured.slug) return undefined;
+
+  const content = await readCmsFile(`posts/${slug}.md`);
+
+  return {
+    ...featured,
+    authorBioShort: "backend desde 2014",
+    authorBioFull: "escrevendo sobre backend desde 2014",
+    coverCaptionShort: "Latência p95 antes e depois do cache de borda.",
+    coverCaptionFull:
+      "Latência p95 antes e depois do cache de borda. Legenda de imagem em markdown.",
+    tags: ["arquitetura", "performance", "node"],
+    content,
+    previousPost: {
+      slug: "streams-no-node-sem-sofrer-com-backpressure",
+      title: "Streams no Node sem sofrer com backpressure",
+    },
+    nextPost: {
+      slug: "tipos-que-documentam-a-intencao",
+      title: "Tipos que documentam a intenção, não a estrutura",
+    },
+  };
 }
 
 /** Resumo mostrado acima do título da home. */

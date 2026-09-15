@@ -27,3 +27,27 @@ export type TagFilter = {
   /** A tag ativa aparece preenchida; as outras, só contornadas. */
   active: boolean;
 };
+
+/** Post vizinho, usado na navegação anterior/próximo do rodapé do post. */
+export type PostNavItem = {
+  slug: string;
+  title: string;
+};
+
+/** Página completa de um post: metadados da listagem mais o corpo e a navegação. */
+export type PostDetail = Post & {
+  /** Bio curta do autor, mostrada no mobile. */
+  authorBioShort: string;
+  /** Bio completa, mostrada a partir do desktop. */
+  authorBioFull: string;
+  /** Legenda curta da capa, mostrada no mobile. */
+  coverCaptionShort: string;
+  /** Legenda completa, mostrada a partir do desktop. */
+  coverCaptionFull: string;
+  /** Todas as tags do post; a primeira é a categoria principal. */
+  tags: string[];
+  /** Corpo em markdown, lido do `.cms`. */
+  content: string;
+  previousPost: PostNavItem | null;
+  nextPost: PostNavItem | null;
+};
