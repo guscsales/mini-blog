@@ -8,7 +8,10 @@
  */
 
 export type LogoProps = {
-  /** Altura do wordmark em px. A largura acompanha a proporção. */
+  /**
+   * Altura do wordmark em px. A largura acompanha a proporção. Para variar por
+   * breakpoint, passe `h-*`/`w-auto` no `className` — o CSS vence o atributo.
+   */
   height?: number;
   className?: string;
   /** Cor do hífen. Sobre fundo claro troque para `fill-accent-dim`. */
@@ -31,7 +34,8 @@ export function Logo({
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
       height={height}
       width={(height * WIDTH) / HEIGHT}
-      className={className}
+      preserveAspectRatio="xMinYMid meet"
+      className={`block ${className ?? ""}`}
       role={decorative ? undefined : "img"}
       aria-label={decorative ? undefined : "mini-blog"}
       aria-hidden={decorative || undefined}
