@@ -38,7 +38,7 @@ function getHighlighter(): Promise<Highlighter> {
 }
 
 /**
- * Markdown do `.cms` vira árvore HTML (hast). Fica em `factories` porque é o
+ * Markdown vira árvore HTML (hast). Fica em `factories` porque é o
  * pipeline de conteúdo; quem transforma isso em React é `packages/ui`.
  *
  * O GFM entra para tabela, tarefa, texto riscado e nota de rodapé. O realce de

@@ -6,7 +6,7 @@ import { codeBlockComponents } from "./code-block";
 import { proseComponents } from "./prose-components";
 
 /**
- * Renderiza markdown do `.cms` com o visual do blog.
+ * Renderiza markdown com o visual do blog.
  *
  * Roda inteiro no servidor: o pipeline do remark e o realce de sintaxe
  * acontecem na build, e o cliente recebe só o HTML já pronto.

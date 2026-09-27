@@ -46,7 +46,7 @@ export type PostDetail = Post & {
   coverCaptionFull: string;
   /** Todas as tags do post; a primeira é a categoria principal. */
   tags: string[];
-  /** Corpo em markdown, lido do `.cms`. */
+  /** Corpo em markdown. */
   content: string;
   previousPost: PostNavItem | null;
   nextPost: PostNavItem | null;
